@@ -5,7 +5,7 @@ color red = #ff3845;
 color lightBlue = #add2ff;
 color brown = #bf8045;
 color lightGreen =#61ff5c;
-color skyBlue =#6c96d9;
+color skyBlue =#0a1b4a;
 color yellow =#ffff57;
 color darkBrown = #6b3c05;
 
@@ -13,12 +13,33 @@ void setup(){
   size(1500,1000);
   
   background(skyBlue);
+  
+  fill(white);
+  circle(750,0,500);
   int x,y;
   x=-100;
   y=0;
-  fill(yellow);
-  noStroke();
-  circle(750,0,400);
+  
+  int x2,y2;
+  x2=100;
+  y2=100;
+  
+  int count =0;
+  fill(white);
+  stroke(0);
+  strokeWeight(1);
+
+  while(count<6){
+    star(x2,y2,random(0.8,1.2),0);
+    x2=x2+600;
+    count=count+1;
+    if(x2>1500){
+    x2=100;
+    y2=y2+300;
+    }
+    
+  }
+  
   
   strokeWeight(2);
   while(x<1500){
@@ -29,6 +50,7 @@ void setup(){
 
 
 }
+
 }
 
 void tower(float x, float y, float s){
@@ -90,5 +112,38 @@ void tower(float x, float y, float s){
     rect(x-50,y+40,125,20);
   }
   
+
+void star(float x, float y, float s, float c){  
+  pushMatrix();
+  translate(x,y);
+  scale(s);
   
+  while(c<8){
+  starH(0,0);
+  rotate(PI/4);
+  c++;
+  
+  
+  
+  }
+  starV(0,0);
+  
+  popMatrix();
+}
+
+  void starH(float x, float y){
+    noStroke();
+    fill(random(215,255));
+    
+    ellipse(x,y,random(100,125),random(50,75));
+  }
+  
+
+  void starV(float x, float y){
+    noStroke();
+    fill(random(200,255));
+
+    ellipse(x,y,random(50,75),random(75,85));
+  }
+
   
