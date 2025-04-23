@@ -20,9 +20,9 @@ void setup(){
   x=-100;
   y=0;
   
-  int x2,y2;
-  x2=100;
-  y2=100;
+  float x2,y2;
+  x2= random(50,150);
+  y2= random(50,150);
   
   int count =0;
   fill(white);
@@ -30,11 +30,11 @@ void setup(){
   strokeWeight(1);
 
   while(count<6){
-    star(x2,y2,random(0.8,1.2),0);
+    star(x2,y2,random(0.7,1.3),0);
     x2=x2+600;
     count=count+1;
     if(x2>1500){
-    x2=100;
+    x2=random(50,150);
     y2=y2+300;
     }
     
@@ -51,6 +51,7 @@ void setup(){
 
 }
 
+  player(random(-200,-300),random(-75,-125) ,random(0.8,1.2));
 }
 
 void tower(float x, float y, float s){
@@ -119,31 +120,124 @@ void star(float x, float y, float s, float c){
   scale(s);
   
   while(c<8){
-  starH(0,0);
+  starLength(0,0);
   rotate(PI/4);
   c++;
   
   
   
   }
-  starV(0,0);
+  starCenter(0,0);
   
   popMatrix();
 }
 
-  void starH(float x, float y){
+  void starLength(float x, float y){
     noStroke();
     fill(random(215,255));
     
-    ellipse(x,y,random(100,125),random(50,75));
+    ellipse(x,y,random(100,125),random(25,50));
   }
   
 
-  void starV(float x, float y){
+  void starCenter(float x, float y){
     noStroke();
     fill(random(200,255));
 
-    ellipse(x,y,random(50,75),random(75,85));
+    circle(x,y,random(50,75));
   }
 
+
+
+void player(float x, float y, float s){
+  pushMatrix(); 
+  translate(x,y);
+  scale(s);
   
+  float armX = 742.5;
+  float armY = 500;
+  
+  float legX = 772.5;
+  float legY = 620;
+    
+  float r,g,b;
+  r=random(0,255);
+  g=random(0,255);
+  b=random(0,255);
+ 
+  torso(762.5,500,r,g,b);
+  head(777.5,460);
+ 
+    int c=0;
+    int c2=0;
+    while(c<2){
+    r=random(0,255);
+    g=random(0,255);
+    b=random(0,255);
+    fill(r,g,b);
+    arms(armX,armY);
+    armX=armX+90;
+    c++;
+    }
+    
+    
+    
+    while(c2<2){
+    r=random(0,255);
+    g=random(0,255);
+    b=random(0,255);
+    fill(r,g,b);
+    legs(legX,legY);
+    legX=legX+30;
+    c2++;
+    
+    }
+  popMatrix();
+    
+
+
+}  
+  void torso(float x, float y, float r, float g, float b){
+    stroke(0);
+    strokeWeight(2);
+    
+    r=random(0,255);
+    g=random(0,255);
+    b=random(0,255);
+    fill(r,g,b);
+    
+    rect(x,y,75,120);
+    
+    
+  }
+  
+  void head(float x, float y){
+    stroke(0);
+    strokeWeight(2);
+    
+    fill(200);
+    
+    rect(x,y,50,50,5);
+  
+  }
+  
+  void arms(float x, float y){
+    stroke(0);
+    strokeWeight(2);
+    
+    rect(x,y,30,120);
+        
+
+    
+    }
+  
+    
+  void legs(float x, float y){
+    stroke(0);
+    strokeWeight(2);
+    
+    
+    rect(x,y,30,80);
+    
+
+  }
