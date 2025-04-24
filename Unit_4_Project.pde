@@ -1,7 +1,5 @@
-color beige = #ffe09e;
 color black = #000000;
 color white = #ffffff;
-color red = #ff3845;
 color lightBlue = #add2ff;
 color brown = #bf8045;
 color lightGreen =#61ff5c;
@@ -25,6 +23,13 @@ void setup(){
   y2= random(50,150);
   
   int count =0;
+  
+  float x3,y3;
+  x3 = random(-200,-300);
+  y3 = random(-75,-125);
+  int playerCount = 0;
+  
+  
   fill(white);
   stroke(0);
   strokeWeight(1);
@@ -50,8 +55,12 @@ void setup(){
 
 
 }
-
-  player(random(-200,-300),random(-75,-125) ,random(0.8,1.2));
+  while(playerCount<2){
+    player(x3,y3,random(0.8,1.2));
+    x3=x3+random(250,350);
+    y3=y3+random(-100,100);
+    playerCount++;
+  }
 }
 
 void tower(float x, float y, float s){
@@ -158,7 +167,7 @@ void player(float x, float y, float s){
   float armY = 500;
   
   float legX = 772.5;
-  float legY = 620;
+  float legY = 590;
     
   float r,g,b;
   r=random(0,255);
@@ -166,7 +175,7 @@ void player(float x, float y, float s){
   b=random(0,255);
  
   torso(762.5,500,r,g,b);
-  head(777.5,460);
+  head(777.5,450);
  
     int c=0;
     int c2=0;
@@ -206,7 +215,7 @@ void player(float x, float y, float s){
     b=random(0,255);
     fill(r,g,b);
     
-    rect(x,y,75,120);
+    rect(x,y,75,90);
     
     
   }
@@ -225,7 +234,7 @@ void player(float x, float y, float s){
     stroke(0);
     strokeWeight(2);
     
-    rect(x,y,30,120);
+    rect(x,y,30,90);
         
 
     
