@@ -10,10 +10,35 @@ color darkBrown = #6b3c05;
 void setup(){
   size(1500,1000);
   
-  background(skyBlue);
+  int countBg = 0;
+  float bgX,bgY,bgBlue;
+  bgX = 0;
+  bgY = 0;
+  bgBlue = 11;
   
-  fill(white);
-  circle(750,0,500);
+  while(countBg<10){
+  noStroke();
+  fill(24, 33, bgBlue);
+  rect(bgX,bgY,1500,100);
+  bgY = bgY +100;
+  bgBlue = bgBlue + 15;
+  countBg++;
+  
+  
+  }
+  
+  float moonLayer;
+  int moonCount = 0;
+  moonLayer = 500;
+  
+  while(moonCount<20){
+  float moonShade = random(155,255);
+  fill(moonShade);
+  circle(750,0,moonLayer);
+  moonLayer=moonLayer-25;
+  moonCount++;
+  }
+  
   int x,y;
   x=-100;
   y=0;
@@ -60,6 +85,8 @@ void setup(){
     x3=x3+random(250,350);
     y3=y3+random(-100,100);
     playerCount++;
+    
+    
   }
 }
 
@@ -227,7 +254,17 @@ void player(float x, float y, float s){
     fill(200);
     
     rect(x,y,50,50,5);
-  
+    
+    int eye = 0;
+    float eyeX = x;
+    
+    while(eye<2){
+    circle(eyeX+10,y+10,2);
+    eyeX=eyeX+30;
+    eye++;
+    }
+    
+    ellipse(x+25,y+40,30,10);
   }
   
   void arms(float x, float y){
